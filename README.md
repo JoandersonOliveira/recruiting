@@ -46,12 +46,12 @@ Inclua um arquivo `README.md` com:
 
 | Requisito | Descrição |
 |-----------|-----------|
-| **Versão** | Django 3.2+ |
-| **Templates Obrigatórios** | `landpage.html` - Página inicial com formulário<br>`login.html` - Tela de login personalizada<br>`messages_list.html` - Listagem de mensagens<br>`message_detail.html` - Visualização individual de mensagem<br>`message_edit.html` - Formulário de edição de mensagem (ou modal)<br>`message_delete_confirm.html` - Confirmação de exclusão (ou modal)<br>`logout_confirm.html` - Confirmação de logout (ou modal) |
+| **Versão do Django** | 3.2 ou superior |
+| **Templates Obrigatórios** | • `landpage.html` - Página inicial com formulário<br>• `login.html` - Tela de login personalizada<br>• `messages_list.html` - Listagem de mensagens<br>• `message_detail.html` - Visualização individual<br>• `message_edit.html` - Edição de mensagem (ou modal)<br>• `message_delete_confirm.html` - Confirmação de exclusão (ou modal)<br>• `logout_confirm.html` - Confirmação de logout (ou modal) |
 | **Model** | Mensagem com campos: `nome`, `email`, `mensagem`, `data_envio`, `lido` (boolean) |
 | **Autenticação** | Sistema de autenticação para área administrativa |
 | **CRUD de Mensagens** | Admin deve poder visualizar, editar e apagar mensagens |
-| **API** | Endpoint para receber mensagens do formulário |
+| **API/Endpoint** | Endpoint para receber mensagens do formulário |
 
 ### 🎨 Frontend
 
@@ -304,6 +304,16 @@ python manage.py runserver
 | **Foco** | Apesar de ser full stack, **valorizamos muito** as habilidades de UI/UX |
 | **Performance** | Considere a experiência do usuário final |
 | **Acessibilidade** | Boas práticas de acessibilidade são um **diferencial** |
+
+---
+
+## 💭 Não Conseguiu Completar Tudo?
+
+> **Sem problemas!** Apesar da listagem de requisitos mínimos acima, caso não tenha tido tempo suficiente ou tenha se esbarrado em alguma dificuldade, **entregue o desafio ainda que incompleto** e conte-nos na descrição do Pull Request quais foram as suas maiores dificuldades.
+
+**Não se preocupe, avaliaremos ainda assim!** 😊
+
+O importante é ver seu raciocínio, sua abordagem aos problemas e a qualidade do que você conseguiu desenvolver.
 
 ---
 
