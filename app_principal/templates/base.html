@@ -14,7 +14,8 @@
     {% endblock %}
 </head>
 
-<body class="min-h-screen bg-gray-100 flex items-center justify-center">
+<body class="min-h-screen bg-gray-100 flex items-center justify-center"
+    hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'>
     {% block conteudo %}
     {% endblock %}
 

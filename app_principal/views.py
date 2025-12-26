@@ -6,6 +6,39 @@ from django.http import HttpResponse
 from .models import Message
 
 def valida_login_adm(request):
+    if request.user.is_authenticated:
+        return redirect('lista_mensagens')
+    
+    if request.method == 'POST':
+        usuario_form = request.POST.get('username')
+        senha_form = request.POST.get('password')
+
+        user = authenticate(request, username = usuario_form, password = senha_form)
+
+        if user is not None:
+            login(request, user)
+            # return redirect('listagem_mensagens') lembrar antes de implementar o htmx
+
+            url_destino = resolve_url('lista_mensagens')
+            response = HttpResponse()
+            response['HX-Redirect'] = url_destino
+            return response
+        
+        else:
+            html_erro = """
+                <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-4" role="alert">
+                    <strong class="font-bold">Erro!</strong>
+                    <span class="block sm:inline">Usuário ou senha inválidos!</span>
+                    
+                    <span class="absolute top-0 bottom-0 right-0 px-4 py-3 cursor-pointer" onclick="this.parentElement.remove();">
+                        <svg class="fill-current h-6 w-6 text-red-500" role="button" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                            <title>Fechar</title>
+                            <path d="M14.348 14.849a1.2 1.2 0 0 1-1.697 0L10 11.819l-2.651 3.029a1.2 1.2 0 1 1-1.697-1.697l2.758-3.15-2.759-3.152a1.2 1.2 0 1 1 1.697-1.697L10 8.183l2.651-3.031a1.2 1.2 0 1 1 1.697 1.697l-2.758 3.152 2.758 3.15a1.2 1.2 0 0 1 0 1.698z"/>
+                        </svg>
+                    </span>
+                </div>
+            """
+            return HttpResponse(html_erro)
     return render(request, 'login.html')
 
 
@@ -27,7 +60,7 @@ def cria_mensagem(request):
 
     return render(request, 'formulario.html')
 
-
+@login_required(login_url='/login/')
 def lista_mensagens(request):
     mensagens = Message.objects.all().order_by('-id')
     
