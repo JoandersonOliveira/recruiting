@@ -16,15 +16,14 @@
         <h1 class="text-2xl font-bold text-center mb-6">Login</h1>
 
         <!-- MENSAGEM DE ERRO -->
-        <div id="mensagem" class="mb-4"></div>
+        <div id="div-erro" class="mb-4"><h3>houve um erro</h3></div>
 
         <form
-            hx-post="{% url 'login' %}"
-            hx-target="#mensagem"
+            hx-post="{% url 'valida_login' %}"
+            hx-target="#div-erro"
             hx-swap="innerHTML"
             class="space-y-4"
-        >
-            {% csrf_token %}
+        >{% csrf_token %}
 
             <div>
                 <label class="block text-sm font-medium text-gray-700">Usuário</label>

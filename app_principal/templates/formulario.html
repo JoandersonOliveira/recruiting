@@ -18,30 +18,30 @@
     <div class="w-full max-w-md bg-white rounded-2x1 shadow-lg p-8" x-data="formcadastro()">
         <h1 class="text-2xl font-bold text-center mb-6">Atendimento</h1>
 
-        <form class="space-y-4">
+        <form class="space-y-4" hx-post="{% url 'enviar_mensagem'%}" method="POST">{%csrf_token%}
             <div>
                 <label class="block text-sm font-medium text-gray-700">Nome</label>
-                <input type="text" x-model="form.nome"
+                <input name="nome" type="text" x-model="form.nome"
                     class="mt-1 p-1 w-full rounded-lg border-gray-300 focus:border-indigo-500 focus:ring-indigo-500"
                     placeholder="Seu nome" />
             </div>
             <div>
                 <label class="block text-sm font-medium text-gray-700">Email</label>
-                <input type="email" x-model="form.email"
+                <input name="email" type="email" x-model="form.email"
                     class="mt-01 p-1 w-full rounded-lg border-gray-300 focus:border-indigo-500 focus:ring-indigo-500"
                     placeholder="Ex: seu@email.com">
             </div>
             <div>
                 <label class="block text-sm font-medium text-gray-700">Mensagem</label>
 
-                <textarea x-model="form.mensagem" rows="5" class="mt-1 w-full min-h-[120px] p-1
+                <textarea name="mensagem" rows="5" class="mt-1 w-full min-h-[120px] p-1
                rounded-lg border-gray-300
                focus:border-indigo-500 focus:ring-indigo-500
                resize-y overflow-auto
                leading-normal" placeholder="Ex: preciso de suporte com cadastros">
                 </textarea>
             </div>
-            <button type="button"
+            <button type="submit"
                 class="w-full bg-indigo-600 text-white py-2 rounded-lg hover:bg-indigo-700 transition">Enviar</button>
         </form>
     </div>

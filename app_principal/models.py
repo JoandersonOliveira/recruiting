@@ -1,6 +1,6 @@
 from django.db import models
 
-class Mensagem(models.Model):
+class Message(models.Model):
     nome = models.CharField(max_length=50)
     email = models.EmailField()
     mensagem = models.TextField()
